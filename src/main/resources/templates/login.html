@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Proyecto Spring MVC</title>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>Iniciar Sesion</h1>
+</div>
+<div th:if="${param.error}">
+    Usuario o password incorrectos.
+</div>
+
+<div th:if="${param.logout}">
+    Usted ha cerrado sesion correctamente.
+</div>
+<div>
+    <p th:text="${mensaje}"></p>
+</div>
+
+<div style="text-align: center;">
+    <form th:action="@{/auth/login}" method="post">
+        <label>Cedula:</label>
+        <input type="text" name="username" placeholder="Username">
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password" placeholder="Password">
+        <br>
+        <button type="submit">Iniciar Sesion</button>
+    </form>
+</div>
+
+</body>
+</html>

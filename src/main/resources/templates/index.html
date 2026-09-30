@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Spring MVC</title>
+</head>
+<body>
+<div style="text-align: center;">
+    <h1>Bienvenido a mi web con Spring MVC</h1>
+</div>
+<div>
+    <p th:text="${mensaje}"></p>
+</div>
+<div>
+    <a th:href="@{/usuarios/agregar}">Agregar Usuario</a>
+    <br>
+    <a th:href="@{/usuarios/listar}">Listar Usuarios</a>
+    <br>
+    <a th:href="@{/usuarios/buscar}">Buscar Usuario</a>
+    <br>
+    <a th:href="@{/usuarios/cambiar-password}">Cambiar Password</a>
+    <br>
+    <a th:href="@{/usuarios/perfil}">Ver Perfil</a>
+    <br>
+    <form th:action="@{/auth/logout}" method="post">
+        <button type="submit">Cerrar Sesion</button>
+    </form>
+</div>
+</body>
+</html>
