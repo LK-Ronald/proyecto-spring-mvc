@@ -1,0 +1,7 @@
+package com.company.proyectospring.infrastructure.repository;
+
+import com.company.proyectospring.domain.model.Usuario;
+import org.springframework.data.repository.CrudRepository;
+
+public interface UsuarioRepository extends CrudRepository<Usuario, String> {
+}
