@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Calificacion</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <h1>Buscar Calificacion</h1>
+    <form th:action="@{/calificacion/buscar}" method="post">
+        <label>ID:</label>
+        <input type="number" name="id" required>
+        <button type="submit">Buscar</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</div>
+<hr>
+
+<div>
+    <p th:text="${mensaje}"></p>
+</div>
+
+<div th:if="${calificacion != null}">
+    <table style="margin: 0 auto; text-align: left;">
+        <tr>
+            <td><strong>ID:</strong></td>
+            <td th:text="${calificacion.cid}"></td>
+        </tr>
+        <tr>
+            <td><strong>Estudiante:</strong></td>
+            <td th:text="${calificacion.estudiante}"></td>
+        </tr>
+        <tr>
+            <td><strong>Docente:</strong></td>
+            <td th:text="${calificacion.docente}"></td>
+        </tr>
+        <tr>
+            <td><strong>Asignatura:</strong></td>
+            <td th:text="${calificacion.asignatura}"></td>
+        </tr>
+        <tr>
+            <td><strong>Carrera:</strong></td>
+            <td th:text="${calificacion.carrera}"></td>
+        </tr>
+        <tr>
+            <td><strong>Universidad:</strong></td>
+            <td th:text="${calificacion.universidad}"></td>
+        </tr>
+        <tr>
+            <td><strong>Periodo:</strong></td>
+            <td th:text="${calificacion.periodo}"></td>
+        </tr>
+        <tr>
+            <td><strong>Actividad Evaluada:</strong></td>
+            <td th:text="${calificacion.actividadEvaluada}"></td>
+        </tr>
+        <tr>
+            <td><strong>Nota:</strong></td>
+            <td th:text="${calificacion.nota}"></td>
+        </tr>
+        <tr>
+            <td><strong>Fecha:</strong></td>
+            <td th:text="${calificacion.fecha}"></td>
+        </tr>
+    </table>
+    <br>
+    <div style="text-align: center;">
+        <form th:action="@{/calificacion/actualizar/{id}(id=${calificacion.cid})}" method="get">
+            <button type="submit">Actualizar</button>
+        </form>
+        <form th:action="@{/calificacion/eliminar/{id}(id=${calificacion.cid})}" method="post">
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+</div>
+
+<hr>
+<div>
+    <a th:href="@{/}">Regresar</a>
+</div>
+<div>
+    <a th:href="@{/calificacion/listar}">Listar Calificaciones</a>
+</div>
+</body>
+</html>

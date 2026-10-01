@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Calificacion</title>
+</head>
+<body>
+
+<div style="text-align: center">
+    <h1>Agregar Calificacion</h1>
+</div>
+
+<div>
+    <form th:action="@{/calificacion/agregar}" th:object="${calificacion}" method="post">
+        <div>
+            <label>Estudiante:</label>
+            <input type="text" th:field="*{estudiante}" required>
+        </div>
+        <br>
+        <div>
+            <label>Docente:</label>
+            <input type="text" th:field="*{docente}" required>
+        </div>
+        <br>
+        <div>
+            <label>Asignatura:</label>
+            <input type="text" th:field="*{asignatura}" required>
+        </div>
+        <br>
+        <div>
+            <label>Carrera:</label>
+            <input type="text" th:field="*{carrera}" required>
+        </div>
+        <br>
+        <div>
+            <label>Universidad:</label>
+            <input type="text" th:field="*{universidad}" required>
+        </div>
+        <br>
+        <div>
+            <label>Periodo:</label>
+            <input type="text" th:field="*{periodo}" required>
+        </div>
+        <br>
+        <div>
+            <label>Actividad Evaluada:</label>
+            <input type="text" th:field="*{actividadEvaluada}" required>
+        </div>
+        <br>
+        <div>
+            <label>Nota:</label>
+            <input type="number" step="0.1" inputmode="decimal" th:field="*{nota}" required>
+        </div>
+        <br>
+        <div>
+            <button type="submit">Agregar</button>
+            <button type="reset">Limpiar</button>
+        </div>
+    </form>
+</div>
+
+<div>
+    <p th:text="${mensaje}"></p>
+</div>
+<hr>
+<div>
+    <a th:href="@{/}">Regresar</a>
+</div>
+
+</body>
+</html>

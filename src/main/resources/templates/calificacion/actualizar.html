@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Calificacion</title>
+</head>
+<body>
+<div>
+    <h1>Actualizar Calificacion</h1>
+</div>
+<hr>
+
+<form th:action="@{/calificacion/actualizar/{id}(id=${calificacion.cid})}" th:object="${calificacion}" method="post">
+    <div style="text-align: center">
+        <label>Estudiante:</label>
+        <input type="text" th:field="*{estudiante}" required>
+        <br><br>
+
+        <label>Docente:</label>
+        <input type="text" th:field="*{docente}" required>
+        <br><br>
+
+        <label>Asignatura:</label>
+        <input type="text" th:field="*{asignatura}" required>
+        <br><br>
+
+        <label>Carrera:</label>
+        <input type="text" th:field="*{carrera}" required>
+        <br><br>
+
+        <label>Universidad:</label>
+        <input type="text" th:field="*{universidad}" required>
+        <br><br>
+
+        <label>Periodo:</label>
+        <input type="text" th:field="*{periodo}" required>
+        <br><br>
+
+        <label>Actividad Evaluada:</label>
+        <input type="text" th:field="*{actividadEvaluada}" required>
+        <br><br>
+
+        <label>Nota:</label>
+        <input type="number" step="0.1" inputmode="decimal" th:field="*{nota}" required>
+        <br><br>
+
+        <button type="submit">Actualizar</button>
+        <a th:href="@{/calificacion/listar}">Cancelar</a>
+    </div>
+</form>
+
+</body>
+</html>
