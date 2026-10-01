@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+</head>
+<body>
+
+<div>
+    <h1>Bienvenido, <span th:text="${usuario.nombre}"></span></h1>
+</div>
+
+<div th:if="${usuario != null}">
+    <table>
+        <tr>
+            <th>Cedula:</th>
+            <td th:text="${usuario.cedula}"></td>
+        </tr>
+        <tr>
+            <th>Nombre:</th>
+            <td th:text="${usuario.nombre}"></td>
+        </tr>
+        <tr>
+            <th>Correo:</th>
+            <td th:text="${usuario.correo}"></td>
+        </tr>
+        <tr>
+            <th>Rol:</th>
+            <td th:text="${usuario.rol}"></td>
+        </tr>
+    </table>
+</div>
+
+<div>
+    <a th:href="@{/}">Regresar</a>
+    <form th:action="@{/auth/logout}" method="post">
+        <input type="submit" value="Cerrar sesion">
+    </form>
+</div>
+
+</body>
+</html>

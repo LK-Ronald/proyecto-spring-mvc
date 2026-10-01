@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Usuarios</title>
+</head>
+<body>
+<div style="text-align: center">
+    <h1>Listar Usuarios</h1>
+</div>
+<hr>
+<div th:if="${usuarios.isEmpty()}">
+    <p>No hay usuarios registrados.</p>
+</div>
+
+<div>
+    <p th:text="${mensaje}"></p>
+</div>
+
+<div th:if="${not #lists.isEmpty(usuarios)}">
+    <table border="1" style="margin: 0 auto; text-align: center;">
+        <tr>
+            <th>Cedula</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="usuario : ${usuarios}">
+            <td th:text="${usuario.cedula}"></td>
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.correo}"></td>
+            <td th:text="${usuario.rol}"></td>
+            <td>
+                <form th:action="@{/usuarios/actualizar/{cedula}(cedula=${usuario.cedula})}" method="get">
+                    <button type="submit">Actualizar</button>
+                </form>
+                <form th:action="@{/usuarios/eliminar/{cedula}(cedula=${usuario.cedula})}" method="post">
+                    <button type="submit">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<hr>
+<div>
+    <a th:href="@{/}">Regresar</a>
+</div>
+<div>
+    <a th:href="@{/usuarios/agregar}">Agregar Usuario</a>
+</div>
+</body>
+</html>
