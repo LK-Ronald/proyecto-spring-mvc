@@ -12,16 +12,17 @@ CREATE TABLE tb_usuarios
 
 CREATE TABLE tb_calificaciones
 (
-    cid               INT PRIMARY KEY,
-    estudiante        VARCHAR(100) NOT NULL,
-    docente           VARCHAR(100) NOT NULL,
-    asignatura        VARCHAR(100) NOT NULL,
-    carrera           VARCHAR(100) NOT NULL,
-    universidad       VARCHAR(100) NOT NULL,
-    periodo           VARCHAR(20) NOT NULL,
-    actividadEvaluada VARCHAR(100) NOT NULL,
-    nota              DECIMAL(2, 1),
-    fecha             TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    cid                BIGINT GENERATED ALWAYS AS IDENTITY,
+    estudiante         VARCHAR(100) NOT NULL,
+    docente            VARCHAR(100) NOT NULL,
+    asignatura         VARCHAR(100) NOT NULL,
+    carrera            VARCHAR(100) NOT NULL,
+    universidad        VARCHAR(100) NOT NULL,
+    periodo            VARCHAR(20)  NOT NULL,
+    actividad_evaluada VARCHAR(100) NOT NULL,
+    nota               DECIMAL(2, 1),
+    fecha              TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (cid)
 );
 
 
