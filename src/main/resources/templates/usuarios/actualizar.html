@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar Usuario</title>
+</head>
+<body>
+<div>
+    <h1>Actualizar Usuario</h1>
+</div>
+<hr>
+<div th:if="${usuario == null}">
+    <p style="text-align: center">Usuario no encontrado.</p>
+    <a th:href="@{/}">Regresar</a>
+</div>
+<div th:if="${usuario != null}">
+    <form th:action="@{/usuarios/actualizar/{cedula}(cedula=${usuario.cedula})}" th:object="${usuario}" method="post">
+        <div style="text-align: center">
+            <label>Cedula:</label>
+            <input type="text" th:field="*{cedula}" readonly>
+            <p th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></p>
+            <br>
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}">
+            <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+            <br>
+            <label>Correo:</label>
+            <input type="email" th:field="*{correo}">
+            <p th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></p>
+            <br>
+            <label>Rol:</label>
+            <select th:field="*{rol}">
+                <option th:each="rol : ${T(com.company.proyectospring.domain.enums.Rol).values()}"
+                        th:value="${rol}"
+                        th:text="${rol}">
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></p>
+            <br>
+            <button type="submit">Actualizar</button>
+            <a th:href="@{/}">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

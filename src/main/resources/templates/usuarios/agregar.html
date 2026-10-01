@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h1>Agregar Usuario</h1>
+</div>
+
+<div>
+    <form th:action="@{/usuarios/agregar}" th:object="${usuario}" method="post">
+        <div>
+            <label>Cedula:</label>
+            <input type="text" th:field="*{cedula}">
+            <p th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></p>
+        </div>
+        <br>
+        <div>
+            <label>Nombre:</label>
+            <input type="text" th:field="*{nombre}">
+            <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+        </div>
+        <br>
+        <div>
+            <label>Correo:</label>
+            <input type="email" th:field="*{correo}" placeholder="correo@correo.com">
+            <p th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></p>
+        </div>
+        <br>
+        <div>
+            <label>Password:</label>
+            <input type="password" th:field="*{password}">
+            <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+        </div>
+        <br>
+        <div>
+            <label>Rol:</label>
+            <select th:field="*{rol}">
+                <option value="">Selecciona un rol</option>
+                <option th:each="rol : ${T(com.company.proyectospring.domain.enums.Rol).values()}"
+                        th:value="${rol}"
+                        th:text="${rol}">
+                </option>
+            </select>
+            <p th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"></p>
+        </div>
+        <button type="submit">Agregar</button>
+        <button type="reset">Limpiar</button>
+    </form>
+</div>
+<hr>
+
+<div style="text-align: center">
+    <p th:text="${mensaje}"></p>
+</div>
+
+<div>
+    <a th:href="@{/}">Regresar</a>
+</div>
+
+</body>
+</html>
